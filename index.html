@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Stoic Wallpaper</title>
+    <style>
+        body {
+            background-color: #000;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+            font-family: sans-serif;
+        }
+        img {
+            max-width: 100%;
+            max-height: 100vh;
+            object-fit: contain;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            color: #444;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <img id="wallpaper" src="wallpaper.png" alt="Daily Stoic Quote Wallpaper">
+    <div class="footer">Updated daily at 0800 HRS</div>
+
+    <script>
+        // Cache busting: Append a timestamp to the image URL to ensure latest version
+        const img = document.getElementById('wallpaper');
+        const now = new Date();
+        // Create a cache buster that changes only when the image is expected to change (or slightly after)
+        // Actually, for immediate reload feeling, just use current time. 
+        // But to be cleaner, maybe just random is fine for this purpose.
+        img.src = 'wallpaper.png?v=' + now.getTime();
+    </script>
+</body>
+</html>
