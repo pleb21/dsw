@@ -1,0 +1,37 @@
+name: Daily Wallpaper Update
+
+on:
+  schedule:
+    # 08:00 IST is 02:30 UTC
+    - cron: '30 2 * * *'
+  workflow_dispatch: # Allows manual trigger for testing
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Generate Wallpaper
+        run: |
+          python generate_wallpaper.py
+
+      - name: Commit and Push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Daily wallpaper update"
+          file_pattern: "wallpaper.png"
