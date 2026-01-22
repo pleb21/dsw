@@ -12,9 +12,9 @@ WIDTH = 1080
 HEIGHT = 1920
 BG_COLOR = (0, 0, 0)
 TEXT_COLOR = (255, 255, 255)
-FONT_SIZE = 60
-AUTHOR_FONT_SIZE = 40
-MARGIN = 100
+FONT_SIZE = 50
+AUTHOR_FONT_SIZE = 30
+MARGIN = 180
 
 def get_quote_of_the_day():
     with open(QUOTES_FILE, 'r') as f:
